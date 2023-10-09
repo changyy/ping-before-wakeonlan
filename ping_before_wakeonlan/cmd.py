@@ -33,7 +33,7 @@ def main():
     parser.add_argument('--send-mode', type=str, choices=['sequential', 'random'], default='random', help='Adjust the order of input device')
     parser.add_argument('--silently', action='store_true', default=False, help='Process Report')
     parser.add_argument('--ping-cmd', type=str, default='ping -c 1 -W 3', help='Ping command for test device')
-    parser.add_argument('--device-info', type=str, default=None, help='JSON format with [{"ip": "192.168.1.2", "macAddress":"XX:XX:XX:XX:XX:XX"} ]')
+    parser.add_argument('--device-info', type=str, default=None, help='a file path with JSON format with [{"ip": "192.168.1.2", "macAddress":"XX:XX:XX:XX:XX:XX"} ]')
     args = parser.parse_args()
 
     output = {'ping': args.ping_cmd, 'maxCount': args.max_wol_device ,'count': 0, 'device': {'input': [], 'handled': [], 'online': [], 'skip':[], 'failed': []}, 'info': [],  'version': __version__ }
@@ -44,12 +44,12 @@ def main():
         if not testStdin:
             output['info'].append(f"stdin empty")
         else:
-            args.device_info = sys.stdin.readline().strip()
+            args.device_info = sys.stdin.read().strip()
     else:
         try:
             rawFileContent = None
             with open(args.device_info, 'r') as f:
-                rawFileContent = f.readline().strip()
+                rawFileContent = f.read().strip()
                 args.device_info = rawFileContent
         except Exception as e:
             output['info'].append(f"file read error: {args.device_info}, exception: {e}")

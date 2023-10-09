@@ -14,16 +14,16 @@ Meet this Python Wake-on-LAN (WOL) Tool! It smartly checks your device status wi
 % cat /tmp/device.json
 [
    {
-       "ip": "192.168.1.3",
-       "mac_address": "00:00:00:00:00:03"
+       "ip": "192.168.1.1",
+       "mac_address": "00:00:00:00:00:01"
    },
    {
        "ip": "192.168.1.2",
-       "mac_address": ""00:00:00:00:00:02
+       "mac_address": "00:00:00:00:00:02"
    },
    {
-       "ip": "192.168.1.1",
-       "mac_address": "00:00:00:00:00:01"
+       "ip": "192.168.1.3",
+       "mac_address": "00:00:00:00:00:03"
    },
    {
        "ip": "192.168.1.4",
@@ -82,7 +82,7 @@ Process: 5 / 7: Device: {'ip': '192.168.1.5', 'mac_address': '00:00:00:00:00:05'
             },
             {
                 "ip": "192.168.1.2",
-                "mac_address": ""00:00:00:00:00:02
+                "mac_address": "00:00:00:00:00:02"
             },
             {
                 "ip": "192.168.1.1",
@@ -126,5 +126,10 @@ Process: 5 / 7: Device: {'ip': '192.168.1.5', 'mac_address': '00:00:00:00:00:05'
     "status": true,
     "version": "1.0.0"
 }
+```
 
+or
+
+```
+% cat /tmp/device.json | ping-before-wakeonlan
 ```
