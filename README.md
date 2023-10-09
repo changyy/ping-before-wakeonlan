@@ -8,6 +8,50 @@ Meet this Python Wake-on-LAN (WOL) Tool! It smartly checks your device status wi
 % pip install ping-before-wakeonlan
 ```
 
+or
+
+```
+% python3 -m venv venv
+% source venv/bin/activate
+% pip install ping-before-wakeonlan
+% ./venv/bin/ping-before-wakeonlan
+```
+
+```
+{
+    "count": 0,
+    "device": {
+        "failed": [],
+        "handled": [],
+        "input": [],
+        "online": [],
+        "skip": []
+    },
+    "info": [
+        "--device-info not set empty",
+        "stdin empty"
+    ],
+    "maxCount": 5,
+    "ping": "ping -c 1 -W 3",
+    "version": "1.0.0"
+}
+usage: cmd.py [-h] [--max-wol-device MAX_WOL_DEVICE] [--send-mode {sequential,random}] [--silently] [--ping-cmd PING_CMD]
+              [--device-info DEVICE_INFO]
+
+A Simple Tool for Ping and WOL Usage
+
+options:
+  -h, --help            show this help message and exit
+  --max-wol-device MAX_WOL_DEVICE
+                        WOL device number per a run
+  --send-mode {sequential,random}
+                        Adjust the order of input device
+  --silently            Process Report
+  --ping-cmd PING_CMD   Ping command for test device
+  --device-info DEVICE_INFO
+                        a file path with JSON format with [{"ip": "192.168.1.2", "macAddress":"XX:XX:XX:XX:XX:XX"} ]
+```
+
 # Usage
 
 ```
